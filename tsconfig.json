@@ -26,7 +26,7 @@
 
     "baseUrl": ".", // Base directory for resolving paths
     "paths": {
-      "@/*": ["./apps/*/src/*"], // For local `@/` in apps
+      //"@/*": ["./apps/*/src/*"], // For local `@/` in apps
       "@ui/*": ["./packages/ui/src/*"] // Shared package
     }
   },
