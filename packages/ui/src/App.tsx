@@ -2,7 +2,7 @@
 import "./App.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar_2 } from "@/components/app-sidebar";
-import { Page } from "@/components/blocks/sidebar-15";
+import { Page } from "@/components/blocks/sidebar-08";
 
 function App() {
   return <Page />;
