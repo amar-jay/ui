@@ -36,7 +36,7 @@ import { Separator } from "@/components/ui/separator";
 // This is sample data
 const data = {
   user: {
-    name: "shadcn",
+    name: "amarjay_ui",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
