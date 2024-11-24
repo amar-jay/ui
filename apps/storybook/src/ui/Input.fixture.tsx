@@ -2,4 +2,4 @@
 import "~/index.css";
 import { Input } from "@/components/ui/input";
 
-export default <Input />;
+export default <Input type="email" placeholder="Email" />;

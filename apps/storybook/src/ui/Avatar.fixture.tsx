@@ -4,7 +4,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default (
   <Avatar>
-    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-    <AvatarFallback>CN</AvatarFallback>
+    <AvatarImage
+      src="https://avatars.githubusercontent.com/u/64834413"
+      alt="@amar-jay"
+    />
+    <AvatarFallback>AM</AvatarFallback>
   </Avatar>
 );
