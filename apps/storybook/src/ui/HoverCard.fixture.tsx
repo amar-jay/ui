@@ -13,16 +13,21 @@ import {
 export default (
   <HoverCard>
     <HoverCardTrigger asChild>
-      <Button variant="link">@_amarjay</Button>
+      <span>
+        Hover over <Button variant="link">@amar-jay</Button>
+      </span>
     </HoverCardTrigger>
     <HoverCardContent className="w-80">
       <div className="flex justify-between space-x-4">
         <Avatar>
-          <AvatarImage src="https://github.com/vercel.png" />
+          <AvatarImage
+            src="https://avatars.githubusercontent.com/u/64834413"
+            alt="@amar-jay"
+          />
           <AvatarFallback>AM</AvatarFallback>
         </Avatar>
         <div className="space-y-1">
-          <h4 className="text-sm font-semibold">@nextjs</h4>
+          <h4 className="text-sm font-semibold">@amar-jay</h4>
           <p className="text-sm">Amar Jay - Github.com</p>
           <div className="flex items-center pt-2">
             <CalendarIcon className="mr-2 h-4 w-4 opacity-70" />{" "}

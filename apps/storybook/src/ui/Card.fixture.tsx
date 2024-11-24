@@ -1,8 +1,6 @@
 // This is the fixture file for Card
 import "~/index.css";
 
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -23,7 +21,7 @@ import {
 } from "@/components/ui/select";
 
 const SimpleCard = () => (
-  <Card>
+  <Card className="w-[350px]">
     <CardHeader>
       <CardTitle>Card Title</CardTitle>
       <CardDescription>Card Description</CardDescription>

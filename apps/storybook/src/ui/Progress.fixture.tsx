@@ -2,4 +2,4 @@
 import "~/index.css";
 import { Progress } from "@/components/ui/progress";
 
-export default <Progress />;
+export default <Progress value={70} />;
