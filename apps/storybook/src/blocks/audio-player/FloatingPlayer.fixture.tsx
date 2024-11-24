@@ -94,7 +94,7 @@ const FloatingAudioPlayer = ({
           max={audioDuration}
           step={0.1}
           onValueChange={handleSeek}
-          className="w-48"
+          className="w-20 md:w-48 "
         />
         <div className="flex justify-between text-sm text-gray-500">
           <span>{formatTime(currentTime)}</span>
@@ -162,7 +162,7 @@ function AudioTranscriptionPage() {
   } = useAudioPlayer();
   return (
     <TooltipProvider>
-      <div className="grid grid-cols-1 gap-6 w-[32rem] md:w-[64rem]">
+      <div className="gap-6 w-full">
         <FloatingAudioPlayer
           currentTime={currentTime}
           handleSeek={handleSeek}
