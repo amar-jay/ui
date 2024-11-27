@@ -13,7 +13,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --outDir cosmos-export"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
