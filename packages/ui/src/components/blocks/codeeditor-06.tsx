@@ -36,7 +36,7 @@ import {
   ChevronDown,
   GalleryVerticalEndIcon,
 } from "lucide-react";
-import { lintRISCVAssembly, LinterIssue } from "@/lib/linter";
+import { lintRISCVAssembly, LinterIssue } from "@/lib/linterv2";
 import {
   Tooltip,
   TooltipContent,
@@ -185,7 +185,7 @@ export const RISCVCodeEditor: React.FC = () => {
             <File className="h-4 w-4" />
             <button
               onClick={() => openFile(fullPath)}
-              className={`text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+              className={`text-sm focus:underline focus:outline-none ${
                 activeFile.path === fullPath ? "font-bold" : ""
               }`}
             >
@@ -383,28 +383,30 @@ export const RISCVCodeEditor: React.FC = () => {
             <div className="flex-1 flex flex-col overflow-hidden">
               <Tabs
                 value={activeFile.id}
-                className="flex-1 flex flex-col h-full"
+                className="flex flex-col h-full flex-start"
               >
-                <TabsList className="bg-gray-100 rounded-none ">
-                  {files.map((file) => (
-                    <TabsTrigger
-                      key={file.id}
-                      value={file.id}
-                      className="px-3 text-sm rounded-none mr-auto data-[state=active]:bg-white data-[state=active]:shadow-none border-b-2 data-[state=active]:border-blue-500 border-transparent"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setActiveFile(file);
-                      }}
-                    >
-                      {file.name}
-                      {showLinter && file.issues.length > 0 && (
-                        <span className="ml-2 px-1 bg-red-500 text-white text-xs rounded-full">
-                          {file.issues.length}
-                        </span>
-                      )}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+                <div className="bg-gray-100 w-full">
+                  <TabsList className="mr-auto py-0 my-0">
+                    {files.map((file) => (
+                      <TabsTrigger
+                        key={file.id}
+                        value={file.id}
+                        className="px-3 text-sm rounded-none data-[state=active]:bg-white data-[state=active]:shadow-none border-b-2 data-[state=active]:border-blue-500 border-transparent"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setActiveFile(file);
+                        }}
+                      >
+                        {file.name}
+                        {showLinter && file.issues.length > 0 && (
+                          <span className="ml-2 px-1 bg-red-500 text-white text-xs rounded-full">
+                            {file.issues.length}
+                          </span>
+                        )}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </div>
 
                 {files.map((file) => (
                   <TabsContent
@@ -505,7 +507,7 @@ export function AppSidebar({
           </div>
           <span className="truncate font-semibold">RISCV Editor</span>
         </SidebarMenuButton>
-        <SearchForm />
+        <SearchForm setNewFileName={setNewFileName} newFileName={newFileName} />
 
         <div className="space-x-1 ml-auto">
           <Tooltip>
@@ -513,6 +515,7 @@ export function AppSidebar({
               <Button
                 size="icon"
                 variant={"outline"}
+                disabled={!newFileName}
                 onClick={createFile}
                 className="h-6 w-6 rounded-none "
               >
@@ -530,6 +533,7 @@ export function AppSidebar({
                 size="icon"
                 variant={"outline"}
                 onClick={() => searchFile()}
+                disabled={!newFileName}
                 className="h-6 w-6 rounded-none bg-primary text-primary-foreground"
               >
                 <Search className="w-3 h-3" />
@@ -542,25 +546,6 @@ export function AppSidebar({
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <div className="px-4 py-2">
-          <div className="flex items-center mb-2">
-            <input
-              type="text"
-              value={newFileName}
-              onChange={(e) => setNewFileName(e.target.value)}
-              placeholder="New file name"
-              className="flex-1 mr-2 px-2 py-1 text-sm border rounded"
-            />
-            <Button
-              size="sm"
-              onClick={createFile}
-              disabled={!newFileName}
-              className="h-8 px-2 text-xs"
-            >
-              Add
-            </Button>
-          </div>
-        </div>
         <ScrollArea className="h-[calc(100vh-300px)]">
           <div className="px-4 py-1">
             {renderFileTree(
@@ -577,7 +562,7 @@ export function AppSidebar({
                 });
                 return acc;
               }, {} as FileStructure),
-              "/",
+              "",
             )}
           </div>
         </ScrollArea>
@@ -587,7 +572,14 @@ export function AppSidebar({
   );
 }
 
-export function SearchForm({ ...props }: React.ComponentProps<"form">) {
+export function SearchForm({
+  setNewFileName,
+  newFileName,
+  ...props
+}: {
+  setNewFileName: (name: string) => void;
+  newFileName: string;
+} & React.ComponentProps<"form">) {
   return (
     <form {...props}>
       <SidebarGroup className="py-0">
@@ -598,7 +590,8 @@ export function SearchForm({ ...props }: React.ComponentProps<"form">) {
           <SidebarInput
             id="search"
             placeholder="Search the docs..."
-            className="pl-8"
+            className="px-8  focus-visible:outline-none"
+            onChange={(e) => setNewFileName(e.target.value)}
           />
           <Search className="pointer-events-none absolute left-2 top-1/2 size-4 -translate-y-1/2 select-none opacity-50" />
         </SidebarGroupContent>
