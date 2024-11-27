@@ -16,9 +16,4 @@ export default defineConfig({
       ),
     },
   },
-  build: {
-    rollupOptions: {
-      external: ["~/index.css"], // Or replace with the resolved path if necessary
-    },
-  },
 });
