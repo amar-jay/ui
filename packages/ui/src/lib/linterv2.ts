@@ -1,6 +1,4 @@
-import { parse } from "@swc/core";
-
-interface LinterIssue {
+export interface LinterIssue {
   line: number;
   severity: "error" | "warning";
   message: string;

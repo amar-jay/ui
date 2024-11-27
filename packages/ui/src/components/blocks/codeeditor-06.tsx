@@ -23,17 +23,13 @@ import {
   Terminal,
   AlertTriangle,
   Check,
+  Cpu,
   XIcon,
   File,
-  AudioWaveform,
-  Command,
-  Home,
-  Inbox,
   Search,
-  Sparkles,
   Plus,
+  Minus,
   Folder,
-  ChevronDown,
   GalleryVerticalEndIcon,
 } from "lucide-react";
 import { lintRISCVAssembly, LinterIssue } from "@/lib/linterv2";
@@ -50,11 +46,10 @@ import {
   BreadcrumbItem,
   BreadcrumbPage,
 } from "../ui/breadcrumb";
-import { TeamSwitcher } from "../team-switcher";
 import { Label } from "recharts";
 import { Dialog } from "@radix-ui/react-dialog";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
-
+import { CodeEditor } from "@/components/blocks/codeeditor-01.tsx";
 interface FileStructure {
   [key: string]: string | FileStructure;
 }
@@ -150,9 +145,11 @@ export const RISCVCodeEditor: React.FC = () => {
   const [files, setFiles] = useState<File[]>(initialFiles);
   const [activeFile, setActiveFile] = useState<File>(initialFiles[0]);
   const [newFileName, setNewFileName] = useState("");
-  const [showOutput, setShowOutput] = useState(false);
-  const [showErrors, setShowErrors] = useState(false);
+  const [showTerminal, setShowTerminal] = useState<
+    "Output" | "Instructions" | "Errors" | ""
+  >("");
   const [showLinter, setShowLinter] = useState(true);
+  const [instructionContent, setInstructionContent] = useState("");
   const [outputContent, setOutputContent] = useState("");
   const [errorContent, setErrorContent] = useState("");
   const textareaRefs = useRef<{ [key: string]: HTMLTextAreaElement | null }>(
@@ -223,8 +220,8 @@ export const RISCVCodeEditor: React.FC = () => {
     }
   };
 
-  const removeFile = (fileToRemove: File) => {
-    const updatedFiles = files.filter((file) => file.id !== fileToRemove.id);
+  const removeFile = (fileToRemovePath: string) => {
+    const updatedFiles = files.filter((file) => file.path !== fileToRemovePath);
     setFiles(updatedFiles);
 
     if (updatedFiles.length > 0) {
@@ -240,31 +237,19 @@ export const RISCVCodeEditor: React.FC = () => {
     );
   };
 
-  const renderLineNumbers = (content: string) => {
-    const lines = content.split("\n");
-    return lines.map((_, index) => (
-      <div
-        key={index}
-        className="text-right px-1 bg-gray-50 text-gray-500 select-none"
-      >
-        {index + 1}
-      </div>
-    ));
-  };
-
   const renderEditorWithIssues = (file: File) => {
     return (
       <div className="flex h-full">
-        <div className="overflow-hidden bg-gray-50">
-          {renderLineNumbers(file.content)}
-        </div>
         <div className="flex-1 relative">
-          <textarea
+          <CodeEditor
             ref={(el) => (textareaRefs.current[file.id] = el)}
-            value={file.content}
-            onChange={(e) => updateFileContent(file.id, e.target.value)}
-            className="w-full h-full font-mono text-sm border-none outline-none resize-none pl-2"
-            spellCheck="false"
+            theme="tomorrow"
+            className="w-full h-full font-mono text-sm border-none outline-none resize-none p-0"
+            width="100%"
+            height="100%"
+            code={file.content}
+            setCode={(e: string) => updateFileContent(file.id, e)}
+            name="riscv"
           />
           {showLinter &&
             file.issues.map((issue, idx) => (
@@ -303,6 +288,7 @@ export const RISCVCodeEditor: React.FC = () => {
           activeFile={activeFile}
           setActiveFile={setActiveFile}
           createFile={addNewFile}
+          deleteFile={removeFile}
           newFileName={newFileName}
           setNewFileName={setNewFileName}
           searchFile={() => {}}
@@ -347,8 +333,14 @@ export const RISCVCodeEditor: React.FC = () => {
                     <TooltipTrigger asChild>
                       <Button
                         size="icon"
-                        variant={showOutput ? "default" : "outline"}
-                        onClick={() => setShowOutput(!showOutput)}
+                        variant={
+                          showTerminal == "Output" ? "default" : "outline"
+                        }
+                        onClick={() =>
+                          showTerminal == "Output"
+                            ? setShowTerminal("")
+                            : setShowTerminal("Output")
+                        }
                         className="h-6 w-6"
                       >
                         <Terminal className="h-3 w-3" />
@@ -363,8 +355,35 @@ export const RISCVCodeEditor: React.FC = () => {
                     <TooltipTrigger asChild>
                       <Button
                         size="icon"
-                        variant={showErrors ? "destructive" : "outline"}
-                        onClick={() => setShowErrors(!showErrors)}
+                        variant={
+                          showTerminal == "Instructions" ? "default" : "outline"
+                        }
+                        onClick={() =>
+                          showTerminal == "Instructions"
+                            ? setShowTerminal("")
+                            : setShowTerminal("Instructions")
+                        }
+                        className="h-6 w-6"
+                      >
+                        <Cpu className="h-3 w-3" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="text-xs">Instructions</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        size="icon"
+                        variant={
+                          showTerminal == "Errors" ? "destructive" : "outline"
+                        }
+                        onClick={() =>
+                          showTerminal == "Errors"
+                            ? setShowTerminal("")
+                            : setShowTerminal("Errors")
+                        }
                         className="h-6 w-6"
                       >
                         <AlertTriangle className="h-3 w-3" />
@@ -412,7 +431,7 @@ export const RISCVCodeEditor: React.FC = () => {
                   <TabsContent
                     key={file.id}
                     value={file.id}
-                    className="flex-1 p-2"
+                    className="flex-1 p-0 mt-0"
                   >
                     <Card className="h-full flex flex-col border rounded-none">
                       <CardContent className="flex-1 p-0 overflow-hidden">
@@ -434,10 +453,16 @@ export const RISCVCodeEditor: React.FC = () => {
                             variant="outline"
                             onClick={() => {
                               // Placeholder for compile and run functionality
+                              setInstructionContent(
+                                "Compilation and execution not implemented yet.",
+                              );
+                              setErrorContent(
+                                "Compilation and execution not implemented yet.",
+                              );
                               setOutputContent(
                                 "Compilation and execution not implemented yet.",
                               );
-                              setShowOutput(true);
+                              setShowTerminal("Output");
                             }}
                           >
                             Compile & Run
@@ -459,14 +484,21 @@ export const RISCVCodeEditor: React.FC = () => {
                 ))}
               </Tabs>
             </div>
-            {showOutput && (
-              <div className="bg-black text-white p-4 h-1/3 overflow-auto">
+
+            {showTerminal === "Instructions" && (
+              <div className="bg-black text-white p-4 h-1/3 overflow-auto text-xs">
+                <h3 className="text-lg font-semibold mb-2">Instructions</h3>
+                <pre>{instructionContent}</pre>
+              </div>
+            )}
+            {showTerminal === "Output" && (
+              <div className="bg-black text-white p-4 h-1/3 overflow-auto  text-xs">
                 <h3 className="text-lg font-semibold mb-2">Output</h3>
                 <pre>{outputContent}</pre>
               </div>
             )}
-            {showErrors && errorContent && (
-              <div className="bg-red-100 text-red-900 p-4 h-1/3 overflow-auto">
+            {showTerminal === "Errors" && (
+              <div className="bg-red-100 text-red-900 p-4 h-1/3 overflow-auto text-xs">
                 <h3 className="text-lg font-semibold mb-2">Errors</h3>
                 <pre>{errorContent}</pre>
               </div>
@@ -483,6 +515,7 @@ export function AppSidebar({
   activeFile,
   setActiveFile,
   createFile,
+  deleteFile,
   newFileName,
   setNewFileName,
   searchFile,
@@ -493,6 +526,7 @@ export function AppSidebar({
   activeFile: File;
   setActiveFile: (file: File) => void;
   createFile: () => void;
+  deleteFile: (filename: string) => void;
   newFileName: string;
   setNewFileName: (name: string) => void;
   renderFileTree: (structure: FileStructure, path?: string) => JSX.Element[];
@@ -527,6 +561,22 @@ export function AppSidebar({
             </TooltipContent>
           </Tooltip>
 
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                size="icon"
+                variant={"outline"}
+                disabled={!newFileName}
+                onClick={()=>deleteFile(newFileName)}
+                className="h-6 w-6 rounded-none "
+              >
+                <Minus className="w-3 h-3" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="text-xs">Create</p>
+            </TooltipContent>
+          </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
@@ -589,7 +639,7 @@ export function SearchForm({
           </Label>
           <SidebarInput
             id="search"
-            placeholder="Search the docs..."
+            placeholder="..."
             className="px-8  focus-visible:outline-none"
             onChange={(e) => setNewFileName(e.target.value)}
           />

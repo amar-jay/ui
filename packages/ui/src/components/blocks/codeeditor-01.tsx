@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import AceEditor from "react-ace";
 
-import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
-
-import { Button } from "@/components/ui/button";
+import "ace-builds/src-noconflict/theme-monokai";
 
 // Import our custom RISC-V mode
 import "./riscv-mode";
@@ -16,13 +14,14 @@ interface CodeEditorProps {
   width: string;
   height: string;
   code: string;
-  readOnly: boolean;
-  useWorker: boolean;
+  readOnly?: boolean;
+  useWorker?: boolean;
   className: string;
-  theme: "One Dark" | "Github Light Default";
-  setCode: (code: string) => {};
+  theme: "One Dark" | "monokai" | "tomorrow" | "github";
+  setCode: (code: string) => void;
 }
-export const CodeEditor: React.FC = ({
+
+export const CodeEditor: React.FC<CodeEditorProps> = ({
   name = "code",
   width,
   height,
@@ -32,7 +31,8 @@ export const CodeEditor: React.FC = ({
   theme,
   readOnly = false,
   useWorker = false,
-}: CodeEditorProps) => {
+}) => {
+  /*
   useEffect(() => {
     // Set initial code
     setCode(`# RISC-V Assembly Example
@@ -56,11 +56,12 @@ message:
 `);
   }, []);
 
+  */
   return (
     <AceEditor
       mode={name}
       className={className}
-      theme="monokai"
+      theme={theme}
       onChange={setCode}
       name={name + "-editor"}
       editorProps={{ $blockScrolling: true }}
@@ -70,7 +71,6 @@ message:
         enableLiveAutocompletion: true,
         enableSnippets: true,
         showLineNumbers: true,
-        theme: theme,
         useWorker: useWorker,
         tabSize: 4,
       }}
