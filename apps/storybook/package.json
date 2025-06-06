@@ -9,9 +9,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview --outDir cosmos-export",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "preview": "vite preview --outDir cosmos-export"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -42,7 +40,6 @@
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.4",
-    "@storybook/builder-vite": "^8.4.4",
     "ace-builds": "^1.36.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -66,15 +63,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.2",
     "@eslint/js": "^9.13.0",
-    "@storybook/addon-essentials": "^8.4.4",
-    "@storybook/addon-interactions": "^8.4.4",
-    "@storybook/addon-onboarding": "^8.4.4",
-    "@storybook/blocks": "^8.4.4",
-    "@storybook/react": "^8.4.4",
-    "@storybook/react-vite": "^8.4.4",
-    "@storybook/test": "^8.4.4",
     "@types/bun": "latest",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
@@ -83,12 +72,10 @@
     "eslint": "^9.13.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
-    "eslint-plugin-storybook": "^0.11.0",
     "globals": "^15.11.0",
     "postcss": "^8.4.49",
     "react-cosmos": "^6.2.0",
     "react-cosmos-plugin-vite": "^6.2.0",
-    "storybook": "^8.4.4",
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
@@ -96,10 +83,5 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }

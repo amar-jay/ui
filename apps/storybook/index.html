@@ -2,12 +2,80 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    
+    <!-- Responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Title and description -->
+    <title>Amar Jay UI</title>
+    <meta name="description" content="Amar Jay UI Component Library offers a comprehensive suite of modern, customizable UI components for React applications, designed to boost productivity and enhance user experience." />
+
+    <!-- Keywords for SEO -->
+    <meta name="keywords" content="UI components, React UI library, Amar Jay, customizable UI components, frontend development, React components, web design, user interface, UI toolkit" />
+
+    <!-- Author info -->
+    <meta name="author" content="Amar Jay" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Amar Jay UI Component Library" />
+    <meta property="og:description" content="A modern React UI component library with customizable, accessible components for web developers." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ui.amarjay.com/" />
+    <meta property="og:image" content="https://ui.amarjay.com/preview-image.png" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amar Jay UI Component Library" />
+    <meta name="twitter:description" content="Build stunning web apps faster with Amar Jays React UI components." />
+    <meta name="twitter:image" content="https://ui.amarjay.com/preview-image.png" />
+    <meta name="twitter:creator" content="@amarjay" />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Language -->
+    <meta http-equiv="Content-Language" content="en" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ui.amarjay.com/" />
+		<!-- // vite pre-build script -->
+		<script>
+		  document.addEventListener('DOMContentLoaded', function () {
+		    if (window.location.pathname === '/' && !window.location.search) {
+		      window.location.replace('/?fixtureId={"path"%3A"src%2FHomeOverlay.fixture.tsx"}');
+		    }
+		  });
+		</script>
+
+    <!-- Schema.org structured data for better indexing -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Amar Jay UI Component Library",
+      "url": "https://ui.amarjay.com/",
+      "logo": "https://ui.amarjay.com/vite.svg",
+      "description": "A modern React UI component library with customizable, accessible components for web developers.",
+      "applicationCategory": "DeveloperTool",
+      "operatingSystem": "All",
+      "author": {
+        "@type": "Person",
+        "name": "Amar Jay"
+      }
+    }
+    </script>
+
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Consider adding a skip link for accessibility -->
+    <a href="#root" class="skip-link" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
+    <div id="root" role="main" aria-label="Amar Jay UI"></div>
+
     <script type="module" src="/src/main.tsx"></script>
+
   </body>
 </html>
