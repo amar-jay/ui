@@ -5,9 +5,7 @@
   "private": true,
   "scripts": {
     "cosmos": "cosmos",
-    "cosmos-export": "cosmos-export && bun run ./build-customize.ts",
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "export": "cosmos-export && bun run ./build-customize.ts",
     "lint": "eslint .",
     "preview": "vite preview --outDir cosmos-export"
   },
