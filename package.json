@@ -11,11 +11,12 @@
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.6.3"
   },
   "dependencies": {
-    "ace-builds": "^1.36.5",
-    "caniuse-lite": "^1.0.30001721",
+    "ace-builds": "^1.43.5",
+    "caniuse-lite": "^1.0.30001760",
+    "date-fns": "^4.1.0",
     "react-ace": "^13.0.0"
   }
 }
