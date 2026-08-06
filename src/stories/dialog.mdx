@@ -1,0 +1,18 @@
+import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Dialog', slug: 'dialog', category: 'Overlays', description: 'A modal window that focuses a user on an important task.' }
+
+# Dialog
+
+Dialogs interrupt the current flow for a focused task, decision, or confirmation.
+
+<Story title="Default" description="Use dialogs for tasks that require immediate attention or a clear confirmation." code={`import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+
+<Dialog>
+  <DialogTrigger asChild><Button>Open dialog</Button></DialogTrigger>
+  <DialogContent>...</DialogContent>
+</Dialog>`}>
+  <Dialog><DialogTrigger asChild><Button variant="outline">Open dialog</Button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Ready to publish?</DialogTitle><DialogDescription>Your changes will become visible to everyone with access.</DialogDescription></DialogHeader><DialogFooter><Button>Continue</Button></DialogFooter></DialogContent></Dialog>
+</Story>

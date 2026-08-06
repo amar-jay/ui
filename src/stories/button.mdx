@@ -1,0 +1,34 @@
+import { Button } from '@/components/ui/button'
+import { Story } from './_components/story'
+
+export const meta = {
+  title: 'Button',
+  slug: 'button',
+  category: 'Actions',
+  description: 'Triggers an action or event.',
+}
+
+# Button
+
+Buttons communicate actions that a user can take. Choose a variant that matches the action’s importance.
+
+<Story title="Default" description="Use the default variant for the primary action in a section." code={`import { Button } from '@/components/ui/button'
+
+export function Example() {
+  return <Button>Continue</Button>
+}`}>
+  <Button>Continue</Button>
+</Story>
+
+<Story title="Variants" description="Use lower-emphasis styles for secondary or supporting actions." code={`<Button>Default</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>`}>
+  <Button>Default</Button><Button variant="outline">Outline</Button><Button variant="secondary">Secondary</Button><Button variant="ghost">Ghost</Button>
+</Story>
+
+<Story title="Sizes" description="Button size can be tuned to the density of its surrounding interface." code={`<Button size="sm">Small</Button>
+<Button>Default</Button>
+<Button size="lg">Large</Button>`}>
+  <Button size="sm">Small</Button><Button>Default</Button><Button size="lg">Large</Button>
+</Story>

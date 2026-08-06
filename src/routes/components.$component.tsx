@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ComponentDetail } from '@/components/component-detail'
+import { StoryPage } from '@/stories/story-page'
 
 export const Route = createFileRoute('/components/$component')({
   component: ComponentRoute,
@@ -7,5 +7,5 @@ export const Route = createFileRoute('/components/$component')({
 
 function ComponentRoute() {
   const { component } = Route.useParams()
-  return <ComponentDetail componentSlug={component} />
+  return <StoryPage slug={component} />
 }

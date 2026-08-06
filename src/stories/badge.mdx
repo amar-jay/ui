@@ -1,0 +1,17 @@
+import { Badge } from '@/components/ui/badge'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Badge', slug: 'badge', category: 'Data display', description: 'A compact label for status, metadata, and counts.' }
+
+# Badge
+
+Badges communicate a small piece of metadata without interrupting the surrounding content.
+
+<Story title="Variants" description="Match the badge’s emphasis to the meaning of the status." code={`import { Badge } from '@/components/ui/badge'
+
+<Badge>Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="destructive">Destructive</Badge>`}>
+  <Badge>Default</Badge><Badge variant="secondary">Secondary</Badge><Badge variant="outline">Outline</Badge><Badge variant="destructive">Destructive</Badge>
+</Story>
