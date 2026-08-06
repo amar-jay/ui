@@ -1,4 +1,15 @@
 import type { ComponentType } from 'react'
+import type { LucideIcon } from 'lucide-react'
+import {
+  AlertCircle,
+  Badge as BadgeIcon,
+  CreditCard,
+  FormInput,
+  Layers2,
+  Menu,
+  MousePointerClick,
+  SquareMousePointer,
+} from 'lucide-react'
 import ButtonStory, { meta as buttonMeta } from './button.mdx'
 import InputStory, { meta as inputMeta } from './input.mdx'
 import BadgeStory, { meta as badgeMeta } from './badge.mdx'
@@ -15,16 +26,20 @@ export type StoryMeta = {
   description: string
 }
 
-export type Story = StoryMeta & { Content: ComponentType }
+export type Story = StoryMeta & {
+  Content: ComponentType
+  icon: LucideIcon
+}
 
 export const stories: Story[] = [
-  { ...buttonMeta, Content: ButtonStory },
-  { ...inputMeta, Content: InputStory },
-  { ...badgeMeta, Content: BadgeStory },
-  { ...cardMeta, Content: CardStory },
-  { ...dialogMeta, Content: DialogStory },
-  { ...alertMeta, Content: AlertStory },
-  { ...dropdownMenuMeta, Content: DropdownMenuStory },
-  { ...contextMenuMeta, Content: ContextMenuStory },
+  { ...buttonMeta, Content: ButtonStory, icon: MousePointerClick },
+  { ...inputMeta, Content: InputStory, icon: FormInput },
+  { ...badgeMeta, Content: BadgeStory, icon: BadgeIcon },
+  { ...cardMeta, Content: CardStory, icon: CreditCard },
+  { ...dialogMeta, Content: DialogStory, icon: Layers2 },
+  { ...alertMeta, Content: AlertStory, icon: AlertCircle },
+  { ...dropdownMenuMeta, Content: DropdownMenuStory, icon: Menu },
+  { ...contextMenuMeta, Content: ContextMenuStory, icon: SquareMousePointer },
 ]
+
 export const storyFromSlug = (slug: string) => stories.find((story) => story.slug === slug)

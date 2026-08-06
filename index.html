@@ -4,7 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#09090b" />
-    <title>TanStack Starter</title>
+    <title>Component Docs</title>
+    <script>
+      // Prevent light/dark flash before React mounts
+      try {
+        var theme = localStorage.getItem('ui-docs-theme')
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        }
+      } catch (_) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
