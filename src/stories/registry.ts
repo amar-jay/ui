@@ -11,6 +11,7 @@ import {
   MousePointerClick,
   SquareMousePointer,
   SlidersHorizontal,
+  SlidersVertical,
 } from 'lucide-react'
 import ButtonStory, { meta as buttonMeta } from './button.mdx'
 import InputStory, { meta as inputMeta } from './input.mdx'
@@ -22,6 +23,7 @@ import DropdownMenuStory, { meta as dropdownMenuMeta } from './dropdown-menu.mdx
 import ContextMenuStory, { meta as contextMenuMeta } from './context-menu.mdx'
 import MusicPlayerPillStory, { meta as musicPlayerPillMeta } from './music-player-pill.mdx'
 import SliderStory, { meta as sliderMeta } from './slider.mdx'
+import ImageComparisonSliderStory, { meta as imageComparisonSliderMeta } from './image-comparison-slider.mdx'
 
 export type StoryMeta = {
   title: string
@@ -46,6 +48,7 @@ export const stories: Story[] = [
   { ...contextMenuMeta, Content: ContextMenuStory, icon: SquareMousePointer },
   { ...musicPlayerPillMeta, Content: MusicPlayerPillStory, icon: Headphones },
   { ...sliderMeta, Content: SliderStory, icon: SlidersHorizontal },
+  { ...imageComparisonSliderMeta, Content: ImageComparisonSliderStory, icon: SlidersVertical },
 ]
 
 export const storyFromSlug = (slug: string) => stories.find((story) => story.slug === slug)

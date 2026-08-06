@@ -1,0 +1,13 @@
+import { ImageComparisonSlider } from '@/components/examples/image-comparison-slider'
+import imageComparisonSliderSource from '@/components/examples/image-comparison-slider.tsx?raw'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Image Comparison Slider', slug: 'image-comparison-slider', category: 'Patterns', description: 'A draggable before-and-after image comparison with a vertical reveal handle.' }
+
+# Image Comparison Slider
+
+Reveal a before-and-after treatment by dragging the vertical handle across an image. This example compares a blurred source to its sharp result.
+
+<Story title="Blur comparison" description="Drag the handle horizontally to reveal the sharp image beneath the blurred layer." code={imageComparisonSliderSource}>
+  <ImageComparisonSlider />
+</Story>

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, Outlet, useLocation } from '@tanstack/react-router'
 import { Github, Moon, PanelLeft, Search, Sun } from 'lucide-react'
 import { stories } from '@/stories/registry'
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
   Sidebar,
@@ -44,11 +43,15 @@ function AppSidebar({
   setQuery,
   filtered,
   pathname,
+  dark,
+  setDark,
 }: {
   query: string
   setQuery: (query: string) => void
   filtered: typeof stories
   pathname: string
+  dark: boolean
+  setDark: (value: boolean | ((value: boolean) => boolean)) => void
 }) {
   const { toggleSidebar } = useSidebar()
 
@@ -121,6 +124,15 @@ function AppSidebar({
       <SidebarFooter className="border-t border-sidebar-border p-2">
         <SidebarMenu>
           <SidebarMenuItem>
+            <SidebarMenuButton
+              tooltip={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+              onClick={() => setDark((value) => !value)}
+            >
+              {dark ? <Sun /> : <Moon />}
+              <span>{dark ? 'Light mode' : 'Dark mode'}</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
             <SidebarMenuButton asChild tooltip="GitHub">
               <a href="https://github.com" target="_blank" rel="noreferrer">
                 <Github />
@@ -163,27 +175,12 @@ export function AppLayout() {
         setQuery={setQuery}
         filtered={filtered}
         pathname={pathname}
+        dark={dark}
+        setDark={setDark}
       />
 
       <SidebarInset className="min-w-0 bg-background">
-        <header className="sticky top-0 z-20 flex h-14 shrink-0 items-center gap-2 border-b border-border bg-background/90 px-4 backdrop-blur supports-backdrop-filter:bg-background/75 md:px-6">
-          <SidebarTrigger className="md:hidden" />
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium text-foreground">
-              {stories.find((s) => pathname === `/components/${s.slug}`)?.title ??
-                'Components'}
-            </p>
-          </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setDark((value) => !value)}
-            aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {dark ? <Sun /> : <Moon />}
-          </Button>
-        </header>
-
+        <SidebarTrigger className="fixed left-3 top-3 z-40 md:hidden" />
         <div className="min-h-0 flex-1 overflow-y-auto">
           <Outlet />
         </div>
