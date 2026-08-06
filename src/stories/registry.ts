@@ -5,10 +5,12 @@ import {
   Badge as BadgeIcon,
   CreditCard,
   FormInput,
+  Headphones,
   Layers2,
   Menu,
   MousePointerClick,
   SquareMousePointer,
+  SlidersHorizontal,
 } from 'lucide-react'
 import ButtonStory, { meta as buttonMeta } from './button.mdx'
 import InputStory, { meta as inputMeta } from './input.mdx'
@@ -18,6 +20,8 @@ import DialogStory, { meta as dialogMeta } from './dialog.mdx'
 import AlertStory, { meta as alertMeta } from './alert.mdx'
 import DropdownMenuStory, { meta as dropdownMenuMeta } from './dropdown-menu.mdx'
 import ContextMenuStory, { meta as contextMenuMeta } from './context-menu.mdx'
+import MusicPlayerPillStory, { meta as musicPlayerPillMeta } from './music-player-pill.mdx'
+import SliderStory, { meta as sliderMeta } from './slider.mdx'
 
 export type StoryMeta = {
   title: string
@@ -40,6 +44,8 @@ export const stories: Story[] = [
   { ...alertMeta, Content: AlertStory, icon: AlertCircle },
   { ...dropdownMenuMeta, Content: DropdownMenuStory, icon: Menu },
   { ...contextMenuMeta, Content: ContextMenuStory, icon: SquareMousePointer },
+  { ...musicPlayerPillMeta, Content: MusicPlayerPillStory, icon: Headphones },
+  { ...sliderMeta, Content: SliderStory, icon: SlidersHorizontal },
 ]
 
 export const storyFromSlug = (slug: string) => stories.find((story) => story.slug === slug)
