@@ -1,8 +1,15 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, Outlet, useLocation } from '@tanstack/react-router'
-import { Github, Moon, PanelLeft, Search, Sun } from 'lucide-react'
+import { Github, Moon, Palette, PanelLeft, Search, Sun } from 'lucide-react'
 import { stories } from '@/stories/registry'
 import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import {
   Sidebar,
   SidebarContent,
@@ -22,6 +29,15 @@ import {
 } from '@/components/ui/sidebar'
 
 const THEME_KEY = 'ui-docs-theme'
+const STYLE_KEY = 'ui-docs-style'
+
+const styles = [
+  { value: 'mono', label: 'Mono' },
+  { value: 'ocean', label: 'Ocean' },
+  { value: 'orchid', label: 'Orchid' },
+] as const
+
+type Style = (typeof styles)[number]['value']
 
 function readInitialDark() {
   if (typeof document === 'undefined') return false
@@ -38,6 +54,16 @@ function applyDarkClass(dark: boolean) {
   document.documentElement.classList.toggle('dark', dark)
 }
 
+function readInitialStyle(): Style {
+  if (typeof window === 'undefined') return 'mono'
+  const stored = localStorage.getItem(STYLE_KEY)
+  return styles.some((style) => style.value === stored) ? (stored as Style) : 'mono'
+}
+
+function applyStyle(style: Style) {
+  document.documentElement.dataset.style = style
+}
+
 function AppSidebar({
   query,
   setQuery,
@@ -45,6 +71,8 @@ function AppSidebar({
   pathname,
   dark,
   setDark,
+  style,
+  setStyle,
 }: {
   query: string
   setQuery: (query: string) => void
@@ -52,6 +80,8 @@ function AppSidebar({
   pathname: string
   dark: boolean
   setDark: (value: boolean | ((value: boolean) => boolean)) => void
+  style: Style
+  setStyle: (style: Style) => void
 }) {
   const { toggleSidebar } = useSidebar()
 
@@ -67,7 +97,7 @@ function AppSidebar({
             >
               <PanelLeft />
               <span className="font-heading text-sm font-semibold tracking-tight">
-                Component Docs
+                ui.amarjay
               </span>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -122,6 +152,24 @@ function AppSidebar({
       </SidebarContent>
 
       <SidebarFooter className="border-t border-sidebar-border p-2">
+        <div className="mb-2 space-y-1 px-1 group-data-[collapsible=icon]:hidden">
+          <label className="flex items-center gap-2 text-xs text-muted-foreground" htmlFor="app-style">
+            <Palette className="size-3.5" />
+            Style
+          </label>
+          <Select value={style} onValueChange={(value) => setStyle(value as Style)}>
+            <SelectTrigger id="app-style" className="w-full">
+              <SelectValue placeholder="Choose a style" />
+            </SelectTrigger>
+            <SelectContent position="popper" align="start">
+              {styles.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
@@ -150,12 +198,18 @@ function AppSidebar({
 export function AppLayout() {
   const [query, setQuery] = useState('')
   const [dark, setDark] = useState(readInitialDark)
+  const [style, setStyle] = useState<Style>(readInitialStyle)
   const pathname = useLocation({ select: (location) => location.pathname })
 
   useEffect(() => {
     applyDarkClass(dark)
     localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light')
   }, [dark])
+
+  useEffect(() => {
+    applyStyle(style)
+    localStorage.setItem(STYLE_KEY, style)
+  }, [style])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -177,6 +231,8 @@ export function AppLayout() {
         pathname={pathname}
         dark={dark}
         setDark={setDark}
+        style={style}
+        setStyle={setStyle}
       />
 
       <SidebarInset className="min-w-0 bg-background">

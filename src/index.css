@@ -4,6 +4,8 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/roboto";
 @import "@fontsource-variable/noto-serif";
+@import "./styles/ocean.css";
+@import "./styles/orchid.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -141,4 +143,20 @@
   :not(pre) > code {
     @apply rounded-md bg-muted px-1.5 py-0.5 font-mono text-[0.875em] text-foreground;
   }
+
+  .code-token-keyword { color: oklch(0.47 0.2 275); }
+  .code-token-string { color: oklch(0.45 0.15 150); }
+  .code-token-comment { color: oklch(0.55 0 0); font-style: italic; }
+  .code-token-number { color: oklch(0.52 0.17 35); }
+  .code-token-tag { color: oklch(0.48 0.19 25); }
+  .code-token-component { color: oklch(0.43 0.16 235); }
+  .code-token-attribute { color: oklch(0.45 0.14 35); }
+
+  .dark .code-token-keyword { color: oklch(0.75 0.17 285); }
+  .dark .code-token-string { color: oklch(0.78 0.14 155); }
+  .dark .code-token-comment { color: oklch(0.6 0 0); }
+  .dark .code-token-number { color: oklch(0.76 0.16 55); }
+  .dark .code-token-tag { color: oklch(0.75 0.16 35); }
+  .dark .code-token-component { color: oklch(0.74 0.15 235); }
+  .dark .code-token-attribute { color: oklch(0.76 0.14 55); }
 }

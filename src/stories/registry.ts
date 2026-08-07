@@ -2,6 +2,7 @@ import type { ComponentType } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import {
   AlertCircle,
+  BarChart3,
   Badge as BadgeIcon,
   CreditCard,
   FormInput,
@@ -21,9 +22,10 @@ import DialogStory, { meta as dialogMeta } from './dialog.mdx'
 import AlertStory, { meta as alertMeta } from './alert.mdx'
 import DropdownMenuStory, { meta as dropdownMenuMeta } from './dropdown-menu.mdx'
 import ContextMenuStory, { meta as contextMenuMeta } from './context-menu.mdx'
-import MusicPlayerPillStory, { meta as musicPlayerPillMeta } from './music-player-pill.mdx'
+import AudioPlayerStory, { meta as audioPlayerMeta } from './audio-player.mdx'
 import SliderStory, { meta as sliderMeta } from './slider.mdx'
 import ImageComparisonSliderStory, { meta as imageComparisonSliderMeta } from './image-comparison-slider.mdx'
+import ChartsStory, { meta as chartsMeta } from './charts.mdx'
 
 export type StoryMeta = {
   title: string
@@ -46,9 +48,10 @@ export const stories: Story[] = [
   { ...alertMeta, Content: AlertStory, icon: AlertCircle },
   { ...dropdownMenuMeta, Content: DropdownMenuStory, icon: Menu },
   { ...contextMenuMeta, Content: ContextMenuStory, icon: SquareMousePointer },
-  { ...musicPlayerPillMeta, Content: MusicPlayerPillStory, icon: Headphones },
+  { ...audioPlayerMeta, Content: AudioPlayerStory, icon: Headphones },
   { ...sliderMeta, Content: SliderStory, icon: SlidersHorizontal },
   { ...imageComparisonSliderMeta, Content: ImageComparisonSliderStory, icon: SlidersVertical },
+  { ...chartsMeta, Content: ChartsStory, icon: BarChart3 },
 ]
 
 export const storyFromSlug = (slug: string) => stories.find((story) => story.slug === slug)

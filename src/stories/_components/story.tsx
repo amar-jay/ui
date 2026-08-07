@@ -3,6 +3,7 @@ import { Check, Copy } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { HighlightedCode } from './highlighted-code'
 
 export function Story({
   title,
@@ -59,9 +60,7 @@ export function Story({
             {preview}
           </TabsContent>
           <TabsContent value="code" className="relative mt-3">
-            <pre className="overflow-x-auto rounded-xl border border-border bg-muted/40 p-4 text-xs leading-6 text-foreground md:p-5">
-              <code className="font-mono text-foreground">{code}</code>
-            </pre>
+            <HighlightedCode code={code} />
             <Button
               variant="ghost"
               size="icon-sm"
