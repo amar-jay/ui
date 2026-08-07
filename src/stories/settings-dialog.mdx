@@ -1,0 +1,13 @@
+import { SettingsDialog } from '@/components/examples/settings-dialog'
+import settingsDialogSource from '@/components/examples/settings-dialog.tsx?raw'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Settings Dialog', slug: 'settings-dialog', category: 'Patterns', description: 'A spacious settings panel that combines a sidebar, breadcrumb, and focused controls.' }
+
+# Settings Dialog
+
+Use a settings dialog when people need to configure a group of related preferences without leaving their current context.
+
+<Story title="Sidebar settings" description="Select a category from the sidebar and keep the current section visible in the breadcrumb." code={settingsDialogSource}>
+  <SettingsDialog />
+</Story>

@@ -186,6 +186,20 @@
           "type": "registry:block"
         }
       ]
+    },
+    {
+      "name": "settings-dialog",
+      "type": "registry:block",
+      "title": "Settings Dialog",
+      "description": "A settings dialog with sidebar navigation and focused controls.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["breadcrumb", "button", "dialog", "sidebar", "switch"],
+      "files": [
+        {
+          "path": "src/components/examples/settings-dialog.tsx",
+          "type": "registry:block"
+        }
+      ]
     }
   ]
 }

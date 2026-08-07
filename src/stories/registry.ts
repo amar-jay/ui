@@ -10,6 +10,7 @@ import {
   Layers2,
   Menu,
   MousePointerClick,
+  Settings,
   SquareMousePointer,
   SlidersHorizontal,
   SlidersVertical,
@@ -26,6 +27,7 @@ import AudioPlayerStory, { meta as audioPlayerMeta } from './audio-player.mdx'
 import SliderStory, { meta as sliderMeta } from './slider.mdx'
 import ImageComparisonSliderStory, { meta as imageComparisonSliderMeta } from './image-comparison-slider.mdx'
 import ChartsStory, { meta as chartsMeta } from './charts.mdx'
+import SettingsDialogStory, { meta as settingsDialogMeta } from './settings-dialog.mdx'
 
 export type StoryMeta = {
   title: string
@@ -53,6 +55,7 @@ export const stories: Story[] = [
   { ...sliderMeta, Content: SliderStory, icon: SlidersHorizontal, registryItem: 'slider' },
   { ...imageComparisonSliderMeta, Content: ImageComparisonSliderStory, icon: SlidersVertical, registryItem: 'image-comparison-slider' },
   { ...chartsMeta, Content: ChartsStory, icon: BarChart3, registryItem: 'chart-examples' },
+  { ...settingsDialogMeta, Content: SettingsDialogStory, icon: Settings, registryItem: 'settings-dialog' },
 ]
 
 export const storyFromSlug = (slug: string) => stories.find((story) => story.slug === slug)
