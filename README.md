@@ -1,6 +1,6 @@
-# TanStack + shadcn/ui + Vercel
+# Amarjay UI
 
-A small React starter built with Vite, TanStack Router, TanStack Query, Tailwind CSS, and shadcn/ui conventions.
+A component documentation site and shadcn registry built with Vite, TanStack Router, Tailwind CSS, and shadcn/ui conventions.
 
 ## UI preset
 
@@ -16,6 +16,18 @@ npm run dev
 ## Deploy on Vercel
 
 Push the repository to GitHub, GitLab, or Bitbucket and import it in Vercel. Vercel detects Vite and runs `npm run build`; the included `vercel.json` serves `index.html` for client-side routes.
+
+## shadcn registry
+
+The registry source is [registry.json](./registry.json). `npm run build` generates installable registry items in `public/r`, which are served by the deployed site.
+
+After deploying, install an item with its public URL:
+
+```bash
+npx shadcn@latest add https://YOUR-DEPLOYMENT-URL/r/audio-player.json
+```
+
+For example, use your Vercel deployment URL (`https://your-project.vercel.app`) or a GitHub Pages URL (`https://amar-jay.github.io/ui`). A custom domain is optional; it only replaces this base URL with a branded one.
 
 ## Project structure
 

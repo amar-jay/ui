@@ -1,0 +1,137 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "amarjay-ui",
+  "homepage": "https://github.com/amar-jay/ui",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "description": "Class name utility used by Amarjay UI components.",
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "Customizable button component.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "description": "Avatar component with image and fallback support.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "description": "Floating popover component.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "description": "Range slider component.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "description": "Accessible tooltip component.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "description": "Composable chart primitives built on Recharts.",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "src/components/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-player",
+      "type": "registry:block",
+      "title": "Audio Player",
+      "description": "Inline and floating audio-player controls.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["button", "avatar", "popover", "slider", "tooltip"],
+      "files": [
+        {
+          "path": "src/components/examples/audio-player.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "image-comparison-slider",
+      "type": "registry:block",
+      "title": "Image Comparison Slider",
+      "description": "Draggable before-and-after image comparison control.",
+      "dependencies": ["lucide-react"],
+      "files": [
+        {
+          "path": "src/components/examples/image-comparison-slider.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "chart-examples",
+      "type": "registry:block",
+      "title": "Chart Examples",
+      "description": "Bar, line, scatter, candlestick, donut, and pie chart examples.",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["chart"],
+      "files": [
+        {
+          "path": "src/components/examples/charts.tsx",
+          "type": "registry:block"
+        }
+      ]
+    }
+  ]
+}
