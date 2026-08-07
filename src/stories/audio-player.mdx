@@ -1,0 +1,17 @@
+import { FloatingAudioPlayerDemo, InlineAudioPlayer } from '@/components/examples/audio-player'
+import audioPlayerSource from '@/components/examples/audio-player.tsx?raw'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Audio Player', slug: 'audio-player', category: 'Patterns', description: 'Inline and floating playback controls with progress, transport, and volume actions.' }
+
+# Audio Player
+
+Two audio-player variants for persistent media controls without taking over the interface.
+
+<Story title="Inline player" description="A compact now-playing pill. Play starts an original browser-synthesized demo loop." code={audioPlayerSource}>
+  <InlineAudioPlayer />
+</Story>
+
+<Story title="Floating player" description="A bottom-centered transport control. The reusable version accepts playback state and callbacks as props." code={audioPlayerSource}>
+  <FloatingAudioPlayerDemo />
+</Story>

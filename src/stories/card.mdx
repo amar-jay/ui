@@ -1,0 +1,19 @@
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Card', slug: 'card', category: 'Layout', description: 'A container that groups related content and actions.' }
+
+# Card
+
+Cards establish visual boundaries around a related unit of information.
+
+<Story title="Default" description="Use a header, content area, and footer when the content has a clear hierarchy." code={`import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+
+<Card>
+  <CardHeader><CardTitle>Project settings</CardTitle></CardHeader>
+  <CardContent>Manage team access and billing.</CardContent>
+  <CardFooter><Button>Open settings</Button></CardFooter>
+</Card>`}>
+  <Card className="w-full max-w-sm"><CardHeader><CardTitle>Project settings</CardTitle><CardDescription>Manage team access and billing.</CardDescription></CardHeader><CardContent>Invite collaborators, configure roles, and update your plan.</CardContent><CardFooter><Button size="sm">Open settings</Button></CardFooter></Card>
+</Story>

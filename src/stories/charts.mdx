@@ -1,0 +1,38 @@
+import { BarChartExample, CandlestickChartExample, DonutChartExample, DotChartExample, LineChartExample, PieChartExample } from '@/components/examples/charts'
+import chartsSource from '@/components/examples/charts.tsx?raw'
+import { Story } from './_components/story'
+
+export const meta = {
+  title: 'Charts',
+  slug: 'charts',
+  category: 'Data display',
+  description: 'Responsive data visualizations with shadcn theming and useful tooltips.',
+}
+
+# Charts
+
+Composable charts for showing performance, trends, and distribution. Hover a data point to inspect it.
+
+<Story title="Bar chart" description="Compare two values across each month." code={chartsSource}>
+  <BarChartExample />
+</Story>
+
+<Story title="Straight line chart" description="A linear trend with clear data-point markers and a dotted comparison series." code={chartsSource}>
+  <LineChartExample />
+</Story>
+
+<Story title="Dot chart" description="A point-only view for small observations without suggesting continuity." code={chartsSource}>
+  <DotChartExample />
+</Story>
+
+<Story title="Candlestick chart" description="A compact market-style chart using range bars and high/low wicks." code={chartsSource}>
+  <CandlestickChartExample />
+</Story>
+
+<Story title="Donut chart" description="Make a compact breakdown of visitors by channel." code={chartsSource}>
+  <DonutChartExample />
+</Story>
+
+<Story title="Pie chart" description="Use the full circle when the proportion is the primary message." code={chartsSource}>
+  <PieChartExample />
+</Story>

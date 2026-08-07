@@ -1,0 +1,31 @@
+import { Input } from '@/components/ui/input'
+import { Search } from 'lucide-react'
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from '@/components/ui/input-group'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Input', slug: 'input', category: 'Forms', description: 'A text field for entering short-form content.' }
+
+# Input
+
+Inputs collect a single line of text from a user.
+
+<Story title="Default" description="Use a clear placeholder to show the expected value." code={`import { Input } from '@/components/ui/input'
+
+<Input type="email" placeholder="name@example.com" />`}>
+  <div className="w-full max-w-sm"><Input type="email" placeholder="name@example.com" /></div>
+</Story>
+
+<Story title="Disabled" description="Disable an input when its value cannot currently be changed." code={`<Input disabled value="Locked value" />`}>
+  <div className="w-full max-w-sm"><Input disabled value="Locked value" /></div>
+</Story>
+
+<Story title="Addons" description="Input groups connect contextual text, icons, and actions directly to a field." code={`import { Search } from 'lucide-react'
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from '@/components/ui/input-group'
+
+<InputGroup>
+  <InputGroupAddon><Search /></InputGroupAddon>
+  <InputGroupInput placeholder="Search components" />
+  <InputGroupAddon align="inline-end"><InputGroupText>⌘ K</InputGroupText></InputGroupAddon>
+</InputGroup>`}>
+  <div className="w-full max-w-sm"><InputGroup><InputGroupAddon><Search /></InputGroupAddon><InputGroupInput placeholder="Search components" /><InputGroupAddon align="inline-end"><InputGroupText>⌘ K</InputGroupText></InputGroupAddon></InputGroup></div>
+</Story>

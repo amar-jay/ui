@@ -1,0 +1,23 @@
+import { Slider } from '@/components/ui/slider'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Slider', slug: 'slider', category: 'Forms', description: 'A control for selecting a numeric value from a continuous range.' }
+
+# Slider
+
+Sliders let users select a value from a range when relative position is more useful than precise text entry.
+
+<Story title="Horizontal" description="Use a horizontal slider for the standard left-to-right value selection pattern." code={`import { Slider } from '@/components/ui/slider'
+
+<Slider defaultValue={[42]} max={100} step={1} aria-label="Progress" />`}>
+  <div className="w-full max-w-md"><Slider defaultValue={[42]} max={100} step={1} aria-label="Progress" /></div>
+</Story>
+
+<Story title="Vertical" description="Use a vertical slider when the surrounding control is naturally vertical, such as a volume fader." code={`<Slider
+  orientation="vertical"
+  defaultValue={[72]}
+  className="h-48"
+  aria-label="Volume"
+/>`}>
+  <div className="flex h-52 items-center justify-center"><Slider orientation="vertical" defaultValue={[72]} className="h-48" aria-label="Volume" /></div>
+</Story>

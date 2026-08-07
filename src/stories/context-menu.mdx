@@ -1,0 +1,21 @@
+import { Folder } from 'lucide-react'
+import { ContextMenu, ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger } from '@/components/ui/context-menu'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Context Menu', slug: 'context-menu', category: 'Overlays', description: 'A contextual action menu triggered by a right click or long press.' }
+
+# Context Menu
+
+Context menus expose actions that relate specifically to the content under the pointer.
+
+<Story title="Document actions" description="Right-click or long press the document preview to open its contextual actions." code={`import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '@/components/ui/context-menu'
+
+<ContextMenu>
+  <ContextMenuTrigger>Document preview</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Open</ContextMenuItem>
+    <ContextMenuItem>Rename</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>`}>
+  <ContextMenu><ContextMenuTrigger asChild><div className="h-64 w-full max-w-xl rounded-xl border border-dashed bg-background"><span className="sr-only">Open document context menu</span></div></ContextMenuTrigger><ContextMenuContent className="w-52"><ContextMenuGroup><ContextMenuLabel>Product brief.md</ContextMenuLabel><ContextMenuItem>Open<ContextMenuShortcut>↵</ContextMenuShortcut></ContextMenuItem><ContextMenuItem>Rename<ContextMenuShortcut>⌘ R</ContextMenuShortcut></ContextMenuItem><ContextMenuItem>Duplicate<ContextMenuShortcut>⌘ D</ContextMenuShortcut></ContextMenuItem></ContextMenuGroup><ContextMenuSeparator /><ContextMenuSub><ContextMenuSubTrigger>Move to</ContextMenuSubTrigger><ContextMenuSubContent className="w-44"><ContextMenuItem><Folder />Projects</ContextMenuItem><ContextMenuItem><Folder />Archive</ContextMenuItem></ContextMenuSubContent></ContextMenuSub><ContextMenuItem>Copy link<ContextMenuShortcut>⌘ L</ContextMenuShortcut></ContextMenuItem><ContextMenuSeparator /><ContextMenuItem variant="destructive">Delete</ContextMenuItem></ContextMenuContent></ContextMenu>
+</Story>

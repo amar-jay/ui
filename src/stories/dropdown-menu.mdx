@@ -1,0 +1,42 @@
+import { MoreHorizontal } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { Story } from './_components/story'
+
+export const meta = { title: 'Dropdown Menu', slug: 'dropdown-menu', category: 'Overlays', description: 'A menu of actions triggered by a button.' }
+
+# Dropdown Menu
+
+Use a dropdown menu to reveal contextual actions without making the interface visually dense.
+
+<Story title="Default" description="A menu trigger should use a clear action label or accessible name." code={`import { MoreHorizontal } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+
+<DropdownMenu>
+  <DropdownMenuTrigger asChild><Button variant="outline">Actions</Button></DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Edit</DropdownMenuItem>
+    <DropdownMenuItem>Duplicate</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>`}>
+  <DropdownMenu><DropdownMenuTrigger asChild><Button variant="outline">Actions <MoreHorizontal /></Button></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuLabel>Project</DropdownMenuLabel><DropdownMenuSeparator /><DropdownMenuItem>Edit</DropdownMenuItem><DropdownMenuItem>Duplicate</DropdownMenuItem><DropdownMenuItem variant="destructive">Delete</DropdownMenuItem></DropdownMenuContent></DropdownMenu>
+</Story>
+
+<Story title="Submenus" description="Use a submenu when an action has a short, related set of choices." code={`import { DropdownMenu, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger } from '@/components/ui/dropdown-menu'
+
+<DropdownMenu>
+  <DropdownMenuTrigger asChild><Button>Share</Button></DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuItem>Copy link</DropdownMenuItem>
+    <DropdownMenuSub>
+      <DropdownMenuSubTrigger>Invite people</DropdownMenuSubTrigger>
+      <DropdownMenuSubContent>
+        <DropdownMenuItem>Can view</DropdownMenuItem>
+        <DropdownMenuItem>Can edit</DropdownMenuItem>
+      </DropdownMenuSubContent>
+    </DropdownMenuSub>
+  </DropdownMenuContent>
+</DropdownMenu>`}>
+  <DropdownMenu><DropdownMenuTrigger asChild><Button>Share</Button></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuItem>Copy link</DropdownMenuItem><DropdownMenuItem>Copy public link</DropdownMenuItem><DropdownMenuSeparator /><DropdownMenuSub><DropdownMenuSubTrigger>Invite people</DropdownMenuSubTrigger><DropdownMenuSubContent><DropdownMenuItem>Can view</DropdownMenuItem><DropdownMenuItem>Can comment</DropdownMenuItem><DropdownMenuItem>Can edit</DropdownMenuItem></DropdownMenuSubContent></DropdownMenuSub><DropdownMenuSub><DropdownMenuSubTrigger>Export as</DropdownMenuSubTrigger><DropdownMenuSubContent><DropdownMenuItem>PDF</DropdownMenuItem><DropdownMenuItem>Markdown</DropdownMenuItem></DropdownMenuSubContent></DropdownMenuSub></DropdownMenuContent></DropdownMenu>
+</Story>
