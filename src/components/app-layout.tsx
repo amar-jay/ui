@@ -33,6 +33,8 @@ const STYLE_KEY = 'ui-docs-style'
 
 const styles = [
   { value: 'mono', label: 'Mono' },
+  { value: 'official', label: 'Official' },
+  { value: 'ember', label: 'Ember' },
   { value: 'ocean', label: 'Ocean' },
   { value: 'orchid', label: 'Orchid' },
 ] as const
