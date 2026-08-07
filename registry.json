@@ -152,6 +152,7 @@
       "title": "Audio Player",
       "description": "Inline and floating audio-player controls.",
       "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils"],
       "registryDependencies": ["button", "avatar", "popover", "slider", "tooltip"],
       "files": [
         {
@@ -166,6 +167,7 @@
       "title": "Image Comparison Slider",
       "description": "Draggable before-and-after image comparison control.",
       "dependencies": ["lucide-react"],
+      "registryDependencies": ["utils"],
       "files": [
         {
           "path": "src/components/examples/image-comparison-slider.tsx",

@@ -8,6 +8,6 @@ export const meta = { title: 'Image Comparison Slider', slug: 'image-comparison-
 
 Reveal a before-and-after treatment by dragging the vertical handle across an image. This example compares a blurred source to its sharp result.
 
-<Story title="Blur comparison" description="Drag the handle horizontally to reveal the sharp image beneath the blurred layer." code={imageComparisonSliderSource}>
-  <ImageComparisonSlider />
+<Story title="Blur comparison" description="Drag, tap, or use the arrow keys on the focused comparison control to reveal the sharp image beneath the blurred layer." code={imageComparisonSliderSource}>
+  <ImageComparisonSlider beforeImage="/images/alpine-cabin.png" afterImage="/images/alpine-cabin.png" alt="Alpine cabin beside a lake" className="[&>div>img]:scale-[1.03] [&>div>img]:blur-[7px]" />
 </Story>
