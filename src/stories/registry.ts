@@ -32,6 +32,7 @@ export type StoryMeta = {
   slug: string
   category: string
   description: string
+  registryItem?: string
 }
 
 export type Story = StoryMeta & {
@@ -40,18 +41,18 @@ export type Story = StoryMeta & {
 }
 
 export const stories: Story[] = [
-  { ...buttonMeta, Content: ButtonStory, icon: MousePointerClick },
-  { ...inputMeta, Content: InputStory, icon: FormInput },
-  { ...badgeMeta, Content: BadgeStory, icon: BadgeIcon },
-  { ...cardMeta, Content: CardStory, icon: CreditCard },
-  { ...dialogMeta, Content: DialogStory, icon: Layers2 },
-  { ...alertMeta, Content: AlertStory, icon: AlertCircle },
-  { ...dropdownMenuMeta, Content: DropdownMenuStory, icon: Menu },
-  { ...contextMenuMeta, Content: ContextMenuStory, icon: SquareMousePointer },
-  { ...audioPlayerMeta, Content: AudioPlayerStory, icon: Headphones },
-  { ...sliderMeta, Content: SliderStory, icon: SlidersHorizontal },
-  { ...imageComparisonSliderMeta, Content: ImageComparisonSliderStory, icon: SlidersVertical },
-  { ...chartsMeta, Content: ChartsStory, icon: BarChart3 },
+  { ...buttonMeta, Content: ButtonStory, icon: MousePointerClick, registryItem: 'button' },
+  { ...inputMeta, Content: InputStory, icon: FormInput, registryItem: 'input' },
+  { ...badgeMeta, Content: BadgeStory, icon: BadgeIcon, registryItem: 'badge' },
+  { ...cardMeta, Content: CardStory, icon: CreditCard, registryItem: 'card' },
+  { ...dialogMeta, Content: DialogStory, icon: Layers2, registryItem: 'dialog' },
+  { ...alertMeta, Content: AlertStory, icon: AlertCircle, registryItem: 'alert' },
+  { ...dropdownMenuMeta, Content: DropdownMenuStory, icon: Menu, registryItem: 'dropdown-menu' },
+  { ...contextMenuMeta, Content: ContextMenuStory, icon: SquareMousePointer, registryItem: 'context-menu' },
+  { ...audioPlayerMeta, Content: AudioPlayerStory, icon: Headphones, registryItem: 'audio-player' },
+  { ...sliderMeta, Content: SliderStory, icon: SlidersHorizontal, registryItem: 'slider' },
+  { ...imageComparisonSliderMeta, Content: ImageComparisonSliderStory, icon: SlidersVertical, registryItem: 'image-comparison-slider' },
+  { ...chartsMeta, Content: ChartsStory, icon: BarChart3, registryItem: 'chart-examples' },
 ]
 
 export const storyFromSlug = (slug: string) => stories.find((story) => story.slug === slug)

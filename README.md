@@ -27,7 +27,7 @@ After deploying, install an item with its public URL:
 npx shadcn@latest add https://YOUR-DEPLOYMENT-URL/r/audio-player.json
 ```
 
-For example, use your Vercel deployment URL (`https://your-project.vercel.app`) or a GitHub Pages URL (`https://amar-jay.github.io/ui`). A custom domain is optional; it only replaces this base URL with a branded one.
+The live registry is available at `https://ui.amarjay.com/r`. A custom domain is optional; it only replaces this base URL with a branded one.
 
 ## Project structure
 

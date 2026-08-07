@@ -1,4 +1,5 @@
 import { storyFromSlug } from './registry'
+import { RegistryInstall } from './_components/registry-install'
 
 export function StoryPage({ slug }: { slug: string }) {
   const story = storyFromSlug(slug)
@@ -28,6 +29,7 @@ export function StoryPage({ slug }: { slug: string }) {
         <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted-foreground md:text-base">
           {story.description}
         </p>
+        {story.registryItem ? <RegistryInstall item={story.registryItem} /> : null}
       </header>
 
       {/* Style only direct MDX prose so demos keep their own component colors */}

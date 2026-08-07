@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "amarjay-ui",
-  "homepage": "https://github.com/amar-jay/ui",
+  "homepage": "https://ui.amarjay.com",
   "items": [
     {
       "name": "utils",
@@ -28,6 +28,36 @@
       ]
     },
     {
+      "name": "alert",
+      "type": "registry:ui",
+      "description": "Callout component for important information or status.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "src/components/ui/alert.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "description": "Compact label for status, metadata, and counts.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "src/components/ui/badge.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "description": "Container for grouping related content and actions.",
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "src/components/ui/card.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "description": "Text field for short-form input.",
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "src/components/ui/input.tsx", "type": "registry:ui" }]
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "description": "Avatar component with image and fallback support.",
@@ -52,6 +82,30 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "description": "Accessible modal dialog component.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["button", "utils"],
+      "files": [{ "path": "src/components/ui/dialog.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "description": "Menu of actions triggered by a button.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "src/components/ui/dropdown-menu.tsx", "type": "registry:ui" }]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "description": "Contextual action menu for a right click or long press.",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["utils"],
+      "files": [{ "path": "src/components/ui/context-menu.tsx", "type": "registry:ui" }]
     },
     {
       "name": "slider",
